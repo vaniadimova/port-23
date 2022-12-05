@@ -1,4 +1,4 @@
-import type {  GetStaticProps } from 'next'
+import type {  GetServerSideProps } from 'next'
 import Head from 'next/head'
 import Link from 'next/link'
 import About from '../components/About'
@@ -14,7 +14,7 @@ import { fetchExperiences } from '../utils/fetchExperiences'
 import { fetchSkills } from '../utils/fetchSkills'
 import { fetchProjects } from '../utils/fetchProjects'
 import { fetchSocial } from '../utils/fetchSocials'
-
+import Image from 'next/image'
 
 type Props = {
   pageInfo: PageInfo;
@@ -63,7 +63,7 @@ const Home = ({ pageInfo, experiences, projects, skills, socials }: Props) => {
 <Link href='#hero'>
 <footer className='sticky w-full cursor-pointer bottom-5'>
 <div className="flex items-center justify-center">
-    <img
+    <img 
       className="rounded-full cursor-pointer h-11 w-11 filter grayscale hover:grayscale-0"
       src="https://cdn.pixabay.com/photo/2013/07/12/12/37/letter-146016__480.png"
       alt="letter V for Vania"
@@ -77,7 +77,7 @@ const Home = ({ pageInfo, experiences, projects, skills, socials }: Props) => {
 
 export default Home;
 
-export const getStaticProps: GetStaticProps <Props>= async () => {
+export const getServerSideProps: GetServerSideProps <Props>= async (context) => {
   const pageInfo: PageInfo = await fetchPageInfo();
   const experiences: Experience[] = await fetchExperiences();
   const skills: Skill[] = await fetchSkills();
