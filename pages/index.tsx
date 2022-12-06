@@ -1,4 +1,4 @@
-import type { NextPage, GetServerSideProps } from 'next'
+import type { NextPage, GetStaticProps } from 'next'
 import Head from 'next/head'
 import Link from 'next/link'
 import About from '../components/About'
@@ -80,7 +80,8 @@ const Home: NextPage<Props> = ({ pageInfo, experiences, projects, skills, social
 
 export default Home;
 
-export const getServerSideProps: GetServerSideProps = async (context) => {
+export const getStaticProps: GetStaticProps<Props> = async () => {
+  
   const pageInfo: PageInfo = await fetchPageInfo();
   const experiences: Experience[] = await fetchExperiences();
   const skills: Skill[] = await fetchSkills();
@@ -97,6 +98,6 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
       socials,
     },
     // Next will attempt to re-generate the page whe request comes in
-    //revalidate: 100,
+  revalidate: 10,
   }
 }
