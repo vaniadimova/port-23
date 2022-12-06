@@ -1,4 +1,4 @@
-import type {  GetServerSideProps } from 'next'
+import type { NextPage, GetServerSideProps } from 'next'
 import Head from 'next/head'
 import Link from 'next/link'
 import About from '../components/About'
@@ -25,7 +25,8 @@ type Props = {
 }
 
 
-const Home = ({ pageInfo, experiences, projects, skills, socials }: Props) => {
+const Home: NextPage<Props> = ({ pageInfo, experiences, projects, skills, socials }) => {
+  
   return (
     <div  className='bg-[rgb(36,36,36)] text-white h-screen snap-y snap-mandatory overflow-y-scroll overflow-x-hidden z-0 scrollbar scrollbar-track-gray-300/40 scrollbar-thumb-[#ed714f]'>
       <Head>
@@ -63,11 +64,13 @@ const Home = ({ pageInfo, experiences, projects, skills, socials }: Props) => {
 <Link href='#hero'>
 <footer className='sticky w-full cursor-pointer bottom-5'>
 <div className="flex items-center justify-center">
-    <img 
+  <picture>
+  <img 
       className="rounded-full cursor-pointer h-11 w-11 filter grayscale hover:grayscale-0"
       src="https://cdn.pixabay.com/photo/2013/07/12/12/37/letter-146016__480.png"
-      alt="letter V for Vania"
-            />
+      alt="letter V for Vania"/>
+  </picture>
+  
   </div>     
 </footer>
 </Link>
@@ -77,7 +80,7 @@ const Home = ({ pageInfo, experiences, projects, skills, socials }: Props) => {
 
 export default Home;
 
-export const getServerSideProps: GetServerSideProps <Props>= async (context) => {
+export const getServerSideProps: GetServerSideProps = async (context) => {
   const pageInfo: PageInfo = await fetchPageInfo();
   const experiences: Experience[] = await fetchExperiences();
   const skills: Skill[] = await fetchSkills();
@@ -94,7 +97,6 @@ export const getServerSideProps: GetServerSideProps <Props>= async (context) => 
       socials,
     },
     // Next will attempt to re-generate the page whe request comes in
-    
-   //revalidate: 100,
+    //revalidate: 100,
   }
 }

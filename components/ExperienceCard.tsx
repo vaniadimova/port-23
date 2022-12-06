@@ -31,7 +31,7 @@ function ExperienceCard({  experience  }: Props) {
       
         <div className="flex my-2 space-x-2">
           {experience.technologies.map((technology) => (
-            <img 
+            <Image width={50} height={50}
               key={technology._id}
               className="w-10 h-10 rounded-full"
               src={urlFor(technology.image).url()}
