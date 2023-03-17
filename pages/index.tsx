@@ -1,4 +1,4 @@
-import type { NextPage, GetStaticProps } from 'next'
+import type { GetStaticProps } from 'next'
 import Head from 'next/head'
 import Link from 'next/link'
 import About from '../components/About'
@@ -14,7 +14,7 @@ import { fetchExperiences } from '../utils/fetchExperiences'
 import { fetchSkills } from '../utils/fetchSkills'
 import { fetchProjects } from '../utils/fetchProjects'
 import { fetchSocial } from '../utils/fetchSocials'
-import Image from 'next/image'
+
 
 type Props = {
   pageInfo: PageInfo;
@@ -25,7 +25,7 @@ type Props = {
 }
 
 
-const Home: NextPage<Props> = ({ pageInfo, experiences, projects, skills, socials }) => {
+const Home = ({ pageInfo, experiences, projects, skills, socials }: Props) => {
   
   return (
     <div  className='bg-[rgb(36,36,36)] text-white h-screen snap-y snap-mandatory overflow-y-scroll overflow-x-hidden z-0 scrollbar scrollbar-track-gray-300/40 scrollbar-thumb-[#ed714f]'>
