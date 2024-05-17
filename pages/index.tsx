@@ -73,7 +73,6 @@ const Home = ({ pageInfo, experiences, projects, skills, socials }: Props) => {
       src="https://cdn.pixabay.com/photo/2013/07/12/12/37/letter-146016__480.png"
       alt="letter V for Vania"/>
   </picture>
-  
   </div>     
 </footer>
 </Link>
